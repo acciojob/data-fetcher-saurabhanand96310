@@ -14,6 +14,7 @@ const App = () => {
   return (
     <div>
       {/* Do not remove the main div */}
+      <h1>Data Fetched from API</h1>
       <pre>
         {data ? JSON.stringify(data, null, 2) : "Loading..."} {/* Display formatted JSON or loading message */}
       </pre>

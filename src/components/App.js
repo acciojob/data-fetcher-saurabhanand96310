@@ -8,7 +8,7 @@ const App = () => {
     fetch("https://dummyjson.com/products")
       .then(response => response.json()) // Parse JSON data
       .then(data => setData(data)) // Update state with fetched data
-      .catch(error => console.log("Error fetching data:", error)); // Log errors
+      .catch(error => setData(error)); // Log errors
   }, []); // Empty dependency array ensures this runs once on component mount
 
   return (

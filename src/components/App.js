@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './../styles/App.css';
+// import { error } from "cypress/types/jquery";
 
 const App = () => {
   const [data, setData] = useState(null); // Initialize state with null
@@ -9,6 +10,20 @@ const App = () => {
       .then(response => response.json()) // Parse JSON data
       .then(data => setData(data)) // Update state with fetched data
       .catch(error => setData(error)); // Log errors
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await fetch("https://dummyjson.com/products"); // Fetch data
+    //     if(!response.ok){
+    //       throw new Error(`HTTP error! status: ${response.status}`);
+    //     }
+    //     const result = await response.json(); // Parse JSON data
+    //     setData(result); // Update state with fetched data
+    //   } catch (error) {
+    //     setData(error.mess) // Log errors
+    //   }
+    // };
+
+    // fetchData(); 
   }, []); // Empty dependency array ensures this runs once on component mount
 
   return (

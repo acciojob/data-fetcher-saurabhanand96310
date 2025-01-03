@@ -3,6 +3,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import './../styles/App.css';
 
+
 const App = () => {
   const [data, setData] = useState(null); // Holds the fetched data
   const [error, setError] = useState(null); // Holds error messages
@@ -10,14 +11,15 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://dummyjson.com/products"); // Fetch data
+        const response = await fetch("https://dummyjson.com/products"); // Simulating error
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`); // Handle HTTP errors
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const result = await response.json(); // Parse JSON
         setData(result); // Update state with fetched data
+        setError(null); // Clear error state
       } catch (err) {
-        setError(err.message); // Update state with error message
+        setError(`An error occurred: ${err.message}`); // Update error state
       }
     };
 
@@ -25,18 +27,16 @@ const App = () => {
   }, []); // Empty dependency array ensures this runs once
 
   return (
-    <div>
-      {/* Main container */}
-      <h1>Data Fetched from API</h1>
-
+    <div id="root">
+      <h1>Data Fetcher</h1>
       {error ? (
-        // Display error message
-        <div style={{ color: "red" }}>Error: {error}</div>
+        // Ensure the error message is clearly rendered
+        <div id="error-message" style={{ color: "red" }}>
+          {error}
+        </div>
       ) : data ? (
-        // Display fetched data
         <pre>{JSON.stringify(data, null, 2)}</pre>
       ) : (
-        // Display loading state
         <div>Loading...</div>
       )}
     </div>

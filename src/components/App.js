@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <div id="root">
-      <h1>Data Fetcher</h1>
+      <h1>Data Fetched from API</h1>
       {error ? (
         // Ensure the error message is clearly rendered
         <div id="error-message" style={{ color: "red" }}>
